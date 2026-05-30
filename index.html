@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Construcciones y Piscinas | Reformas y Albañilería</title>
+  <title>Antonio Pool | Piscinas y Construcción</title>
+
   <style>
     * {
       margin: 0;
@@ -19,11 +20,11 @@
     }
 
     header {
-      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url("img/obra1.jpg");
+      background: linear-gradient(rgba(0,0,0,0.50), rgba(0,0,0,0.50)), url("img/piscina-principal.jpg");
       background-size: cover;
       background-position: center;
       color: white;
-      min-height: 85vh;
+      min-height: 90vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -31,29 +32,46 @@
       padding: 30px;
     }
 
+    .hero {
+      max-width: 900px;
+    }
+
+    .logo {
+      width: 230px;
+      max-width: 80%;
+      margin-bottom: 25px;
+      background: white;
+      border-radius: 18px;
+      padding: 12px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+
     .hero h1 {
-      font-size: 48px;
+      font-size: 54px;
       margin-bottom: 15px;
+      text-shadow: 0 3px 8px rgba(0,0,0,0.45);
     }
 
     .hero p {
-      font-size: 22px;
+      font-size: 23px;
       margin-bottom: 30px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.45);
     }
 
     .btn {
       display: inline-block;
-      background-color: #d88b21;
+      background-color: #0b7fc3;
       color: white;
       padding: 14px 28px;
       border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
       transition: 0.3s;
+      margin: 6px;
     }
 
     .btn:hover {
-      background-color: #b87319;
+      background-color: #075f93;
     }
 
     section {
@@ -81,6 +99,25 @@
       margin-bottom: 15px;
     }
 
+    .owners {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .owner-card {
+      background: #eef7fc;
+      border-left: 5px solid #0b7fc3;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .owner-card h3 {
+      color: #075f93;
+      margin-bottom: 8px;
+    }
+
     .services {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -98,7 +135,7 @@
 
     .service-card h3 {
       margin-bottom: 10px;
-      color: #d88b21;
+      color: #0b7fc3;
     }
 
     .gallery {
@@ -109,14 +146,14 @@
 
     .gallery img {
       width: 100%;
-      height: 230px;
+      height: 240px;
       object-fit: cover;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
     .contact-box {
-      background-color: #222;
+      background-color: #082f49;
       color: white;
       text-align: center;
       border-radius: 12px;
@@ -142,11 +179,15 @@
 
     @media (max-width: 600px) {
       .hero h1 {
-        font-size: 34px;
+        font-size: 36px;
       }
 
       .hero p {
         font-size: 18px;
+      }
+
+      .logo {
+        width: 190px;
       }
 
       section {
@@ -155,13 +196,16 @@
     }
   </style>
 </head>
+
 <body>
 
   <header>
     <div class="hero">
-      <h1>Construcciones y Piscinas</h1>
-      <p>Reformas, albañilería y construcción con acabados profesionales</p>
-      <a class="btn" href="https://wa.me/34600000000" target="_blank">Pedir presupuesto por WhatsApp</a>
+      <img src="img/logo.png" alt="Antonio Pool" class="logo">
+      <h1>Antonio Pool</h1>
+      <p>Piscinas, reformas y construcción con acabados profesionales</p>
+      <a class="btn" href="https://wa.me/34624317520" target="_blank">WhatsApp Antonio Mariscal</a>
+      <a class="btn" href="https://wa.me/34649104749" target="_blank">WhatsApp Antonio Serrano</a>
     </div>
   </header>
 
@@ -169,14 +213,29 @@
     <div class="about">
       <h2>Sobre nosotros</h2>
       <p>
-        En Construcciones y Piscinas somos especialistas en reformas, construcción y trabajos de albañilería.
-        Nos encargamos de ofrecer soluciones profesionales para viviendas, locales y comunidades,
-        cuidando cada detalle desde el inicio hasta la finalización del proyecto.
+        Antonio Pool es una empresa especializada en construcción de piscinas,
+        reformas integrales y trabajos de albañilería.
       </p>
       <p>
-        Trabajamos con seriedad, compromiso y materiales de calidad, adaptándonos a las necesidades
-        de cada cliente para conseguir acabados duraderos y profesionales.
+        Dirigida por Antonio Mariscal y Antonio Serrano, ofrecemos soluciones
+        personalizadas para viviendas, patios, jardines y todo tipo de espacios
+        exteriores e interiores.
       </p>
+      <p>
+        Trabajamos con seriedad, compromiso y materiales de calidad para conseguir
+        acabados duraderos, profesionales y adaptados a las necesidades de cada cliente.
+      </p>
+
+      <div class="owners">
+        <div class="owner-card">
+          <h3>Antonio Mariscal</h3>
+          <p>Teléfono: 624 317 520</p>
+        </div>
+        <div class="owner-card">
+          <h3>Antonio Serrano</h3>
+          <p>Teléfono: 649 104 749</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -184,20 +243,20 @@
     <h2>Servicios</h2>
     <div class="services">
       <div class="service-card">
+        <h3>Piscinas</h3>
+        <p>Construcción, reforma y mejora de piscinas para viviendas y patios.</p>
+      </div>
+      <div class="service-card">
         <h3>Reformas</h3>
-        <p>Reformas completas o parciales de viviendas, baños, cocinas y locales.</p>
+        <p>Reformas completas o parciales de viviendas, baños, cocinas y exteriores.</p>
       </div>
       <div class="service-card">
         <h3>Albañilería</h3>
-        <p>Trabajos de tabiquería, enfoscados, reparaciones y obra general.</p>
+        <p>Trabajos de obra, tabiquería, cerramientos, reparaciones y mantenimiento.</p>
       </div>
       <div class="service-card">
-        <h3>Alicatados</h3>
-        <p>Colocación de azulejos, suelos, pavimentos y revestimientos.</p>
-      </div>
-      <div class="service-card">
-        <h3>Construcción</h3>
-        <p>Pequeñas obras, ampliaciones, arreglos y mantenimiento.</p>
+        <h3>Patios y exteriores</h3>
+        <p>Césped artificial, solados, zonas exteriores, trasteros y acabados decorativos.</p>
       </div>
     </div>
   </section>
@@ -205,26 +264,27 @@
   <section>
     <h2>Nuestros trabajos</h2>
     <div class="gallery">
-      <img src="img/obra1.jpg" alt="Trabajo de construcción 1">
-      <img src="img/obra2.jpg" alt="Trabajo de construcción 2">
-      <img src="img/obra3.jpg" alt="Trabajo de construcción 3">
-      <img src="img/obra4.jpg" alt="Trabajo de construcción 4">
+      <img src="img/obra1.jpg" alt="Piscina terminada con patio">
+      <img src="img/obra2.jpg" alt="Salón cocina reformado">
+      <img src="img/obra3.jpg" alt="Trastero reformado">
+      <img src="img/obra4.jpg" alt="Piscina elevada con césped">
     </div>
   </section>
 
   <section>
     <div class="contact-box">
       <h2>Contacto</h2>
-      <p><strong>Teléfono:</strong> 600 000 000</p>
-      <p><strong>Email:</strong> contacto@construccionesypiscinas.com</p>
-      <p><strong>Zona de trabajo:</strong> Sevilla y provincia</p>
+      <p><strong>Antonio Mariscal:</strong> 624 317 520</p>
+      <p><strong>Antonio Serrano:</strong> 649 104 749</p>
+      <p><strong>Especialistas en:</strong> piscinas, reformas, construcción y albañilería</p>
       <br>
-      <a class="btn" href="https://wa.me/34600000000" target="_blank">Contactar por WhatsApp</a>
+      <a class="btn" href="https://wa.me/34624317520" target="_blank">Contactar con Antonio Mariscal</a>
+      <a class="btn" href="https://wa.me/34649104749" target="_blank">Contactar con Antonio Serrano</a>
     </div>
   </section>
 
   <footer>
-    <p>© 2026 Construcciones y Piscinas. Todos los derechos reservados.</p>
+    <p>© 2026 Antonio Pool. Piscinas y Construcción. Todos los derechos reservados.</p>
   </footer>
 
 </body>
