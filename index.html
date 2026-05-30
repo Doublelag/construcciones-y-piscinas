@@ -152,6 +152,43 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
+    .proceso-obra {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .paso {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.10);
+      transition: transform 0.3s ease;
+    }
+
+    .paso:hover {
+      transform: translateY(-5px);
+    }
+
+    .paso img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .paso h3 {
+      color: #0b7fc3;
+      padding: 18px 18px 8px;
+      font-size: 22px;
+    }
+
+    .paso p {
+      padding: 0 18px 20px;
+      color: #555;
+      font-size: 16px;
+    }
+
     .contact-box {
       background-color: #082f49;
       color: white;
@@ -193,6 +230,10 @@
       section {
         padding: 45px 15px;
       }
+
+      .paso img {
+        height: 240px;
+      }
     }
   </style>
 </head>
@@ -212,19 +253,9 @@
   <section>
     <div class="about">
       <h2>Sobre nosotros</h2>
-      <p>
-        Antonio Pool es una empresa especializada en construcción de piscinas,
-        reformas integrales y trabajos de albañilería.
-      </p>
-      <p>
-        Dirigida por Antonio Mariscal y Antonio Serrano, ofrecemos soluciones
-        personalizadas para viviendas, patios, jardines y todo tipo de espacios
-        exteriores e interiores.
-      </p>
-      <p>
-        Trabajamos con seriedad, compromiso y materiales de calidad para conseguir
-        acabados duraderos, profesionales y adaptados a las necesidades de cada cliente.
-      </p>
+      <p>Antonio Pool es una empresa especializada en construcción de piscinas, reformas integrales y trabajos de albañilería.</p>
+      <p>Dirigida por Antonio Mariscal y Antonio Serrano, ofrecemos soluciones personalizadas para viviendas, patios, jardines y todo tipo de espacios exteriores e interiores.</p>
+      <p>Trabajamos con seriedad, compromiso y materiales de calidad para conseguir acabados duraderos, profesionales y adaptados a las necesidades de cada cliente.</p>
 
       <div class="owners">
         <div class="owner-card">
@@ -270,30 +301,31 @@
       <img src="img/obra4.jpg" alt="Piscina elevada con césped">
     </div>
   </section>
-<section>
+
+  <section>
     <h2>Proceso de transformación</h2>
 
     <div class="proceso-obra">
+      <div class="paso">
+        <img src="img/proceso1.jpg" alt="Estado inicial">
+        <h3>Estado inicial</h3>
+        <p>Situación original antes del inicio de los trabajos.</p>
+      </div>
 
-        <div class="paso">
-            <img src="img/proceso1.jpg" alt="Estado inicial">
-            <h3>Estado inicial</h3>
-            <p>Situación original antes del inicio de los trabajos.</p>
-        </div>
+      <div class="paso">
+        <img src="img/proceso2.jpg" alt="Obra en ejecución">
+        <h3>Obra en ejecución</h3>
+        <p>Desarrollo de los trabajos y ejecución del proyecto.</p>
+      </div>
 
-        <div class="paso">
-            <img src="img/proceso2.jpg" alt="Obra en ejecución">
-            <h3>Obra en ejecución</h3>
-            <p>Desarrollo de los trabajos y ejecución del proyecto.</p>
-        </div>
-
-        <div class="paso">
-            <img src="img/proceso3.jpg" alt="Resultado final">
-            <h3>Resultado final</h3>
-            <p>Proyecto terminado y listo para disfrutar.</p>
-        </div>
+      <div class="paso">
+        <img src="img/proceso3.jpg" alt="Resultado final">
+        <h3>Resultado final</h3>
+        <p>Proyecto terminado y listo para disfrutar.</p>
+      </div>
     </div>
-</section>
+  </section>
+
   <section>
     <div class="contact-box">
       <h2>Contacto</h2>
