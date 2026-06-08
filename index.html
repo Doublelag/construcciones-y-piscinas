@@ -313,6 +313,30 @@ h2 {
 .service-card p { color: var(--gris); font-size: 15px; line-height: 1.7; }
 
 /* ── GALERÍA ── */
+.gallery-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  padding: 9px 26px;
+  border: 2px solid var(--azul);
+  background: transparent;
+  color: var(--azul);
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: all .25s;
+}
+.filter-btn.active,
+.filter-btn:hover {
+  background: var(--azul);
+  color: #fff;
+}
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -323,13 +347,12 @@ h2 {
   height: 260px;
   object-fit: cover;
   border-radius: 14px;
-  transition: transform .4s, box-shadow .4s;
+  transition: transform .4s, box-shadow .4s, opacity .3s;
   display: block;
   cursor: pointer;
 }
-.gallery-grid img:first-child {
-  grid-column: span 3;
-  height: 400px;
+.gallery-grid img.hidden {
+  display: none;
 }
 .gallery-grid img:hover {
   transform: scale(1.02);
@@ -489,7 +512,6 @@ footer {
   .about-stats { grid-template-columns: 1fr 1fr; }
   .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .gallery-grid img { height: 180px; }
-  .gallery-grid img:first-child { grid-column: span 2; height: 240px; }
   .proceso-grid { grid-template-columns: 1fr; }
   .contact-box { padding: 40px 24px; }
   h2 { font-size: 32px; }
@@ -624,13 +646,21 @@ footer {
   <span class="section-tag">Proyectos realizados</span>
   <h2>Nuestros trabajos</h2>
   <div class="section-line"></div>
+  <div class="gallery-filters">
+    <button class="filter-btn active" data-filter="all">Todas</button>
+    <button class="filter-btn" data-filter="piscina">Piscinas</button>
+    <button class="filter-btn" data-filter="reforma">Reformas</button>
+  </div>
   <div class="gallery-grid" id="gallery">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/piscina-principal.jpg" alt="Piscina terminada">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra1.jpg" alt="Piscina con gresite y tarima">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra2.jpg" alt="Piscina terminada vista lateral">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra3.jpg" alt="Reforma de cocina">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra4.jpg" alt="Acabados de alicatado">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra5.jpg" alt="Reforma de baño">
+    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra1.jpg?v=3" alt="Piscina terminada vista exterior" data-cat="piscina">
+    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra2.jpg?v=3" alt="Piscina terminada vista lateral" data-cat="piscina">
+    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra3.jpg?v=3" alt="Piscina con gresite y escalones" data-cat="piscina">
+    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra4.jpg?v=3" alt="Borde de piscina con tarima porcelánica" data-cat="piscina">
+    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra5.jpg?v=3" alt="Interior de piscina con escalones" data-cat="piscina">
+    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra6.jpg?v=3" alt="Escalones de piscina con gresite azul" data-cat="piscina">
+    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra7.jpg?v=3" alt="Alicatado en espiga para baño" data-cat="reforma">
+    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra8.jpg?v=3" alt="Azulejos decorativos con motivos tropicales" data-cat="reforma">
+    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra9.jpg?v=3" alt="Reforma de cuarto de baño con ducha" data-cat="reforma">
   </div>
 </section>
 
@@ -650,27 +680,51 @@ footer {
     <div class="section-line"></div>
     <div class="proceso-grid">
       <div class="paso">
-        <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/proceso1.jpg" alt="Estado inicial">
+        <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/proceso1.jpg?v=3" alt="Inicio de la obra">
         <div class="paso-body">
           <div class="paso-num">01</div>
-          <h3>Estado inicial</h3>
-          <p>Evaluamos el espacio y planificamos cada detalle del proyecto.</p>
+          <h3>Inicio de la obra</h3>
+          <p>Preparación del terreno y excavación para comenzar la construcción.</p>
         </div>
       </div>
       <div class="paso">
-        <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/proceso2.jpg" alt="Obra en ejecución">
+        <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/proceso2.jpg?v=3" alt="Estructura y ferrallado">
         <div class="paso-body">
           <div class="paso-num">02</div>
-          <h3>Obra en ejecución</h3>
-          <p>Ejecutamos los trabajos con materiales de calidad y precisión.</p>
+          <h3>Estructura y ferrallado</h3>
+          <p>Colocación de la armadura de acero y estructura base de la piscina.</p>
         </div>
       </div>
       <div class="paso">
-        <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/proceso3.jpg" alt="Resultado final">
+        <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/proceso3.jpg?v=3" alt="Construcción en ejecución">
         <div class="paso-body">
           <div class="paso-num">03</div>
+          <h3>Construcción en ejecución</h3>
+          <p>Levantamiento de paredes y escalones con materiales de primera calidad.</p>
+        </div>
+      </div>
+      <div class="paso">
+        <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/proceso4.jpg?v=3" alt="Hormigonado y acabados">
+        <div class="paso-body">
+          <div class="paso-num">04</div>
+          <h3>Hormigonado y acabados</h3>
+          <p>Aplicación del hormigón proyectado y primeros acabados interiores.</p>
+        </div>
+      </div>
+      <div class="paso">
+        <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/proceso5.jpg?v=3" alt="Gresite y llenado">
+        <div class="paso-body">
+          <div class="paso-num">05</div>
+          <h3>Gresite y llenado</h3>
+          <p>Colocación del revestimiento final y llenado de la piscina.</p>
+        </div>
+      </div>
+      <div class="paso">
+        <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/proceso6.jpg?v=3" alt="Resultado final">
+        <div class="paso-body">
+          <div class="paso-num">06</div>
           <h3>Resultado final</h3>
-          <p>Entregamos un proyecto terminado con acabados impecables.</p>
+          <p>Entregamos una piscina terminada con acabados impecables y lista para disfrutar.</p>
         </div>
       </div>
     </div>
@@ -723,25 +777,48 @@ function closeMenu() {
   navMobile.classList.remove('open');
 }
 
+// ── Galería: filtros ──
+const filterBtns = document.querySelectorAll('.filter-btn');
+const galleryEl = document.getElementById('gallery');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    galleryEl.querySelectorAll('img').forEach(img => {
+      if (filter === 'all' || img.dataset.cat === filter) {
+        img.classList.remove('hidden');
+      } else {
+        img.classList.add('hidden');
+      }
+    });
+  });
+});
+
 // ── Lightbox ──
-const gallery = document.getElementById('gallery');
 const lightbox = document.getElementById('lightbox');
 const lbImg = document.getElementById('lb-img');
 const lbClose = document.getElementById('lb-close');
 const lbPrev = document.getElementById('lb-prev');
 const lbNext = document.getElementById('lb-next');
-const galleryImgs = Array.from(gallery.querySelectorAll('img'));
 let current = 0;
 
-gallery.addEventListener('click', e => {
+function getVisibleImgs() {
+  return Array.from(galleryEl.querySelectorAll('img:not(.hidden)'));
+}
+
+galleryEl.addEventListener('click', e => {
   if (e.target.tagName === 'IMG') {
-    current = galleryImgs.indexOf(e.target);
+    const visible = getVisibleImgs();
+    current = visible.indexOf(e.target);
     openLightbox(current);
   }
 });
 
 function openLightbox(i) {
-  lbImg.src = galleryImgs[i].src;
+  const visible = getVisibleImgs();
+  lbImg.src = visible[i].src;
   lightbox.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -752,13 +829,22 @@ function closeLightbox() {
 
 lbClose.addEventListener('click', closeLightbox);
 lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-lbPrev.addEventListener('click', () => { current = (current - 1 + galleryImgs.length) % galleryImgs.length; openLightbox(current); });
-lbNext.addEventListener('click', () => { current = (current + 1) % galleryImgs.length; openLightbox(current); });
+lbPrev.addEventListener('click', () => {
+  const visible = getVisibleImgs();
+  current = (current - 1 + visible.length) % visible.length;
+  openLightbox(current);
+});
+lbNext.addEventListener('click', () => {
+  const visible = getVisibleImgs();
+  current = (current + 1) % visible.length;
+  openLightbox(current);
+});
 document.addEventListener('keydown', e => {
   if (!lightbox.classList.contains('open')) return;
+  const visible = getVisibleImgs();
   if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowLeft') { current = (current - 1 + galleryImgs.length) % galleryImgs.length; openLightbox(current); }
-  if (e.key === 'ArrowRight') { current = (current + 1) % galleryImgs.length; openLightbox(current); }
+  if (e.key === 'ArrowLeft') { current = (current - 1 + visible.length) % visible.length; openLightbox(current); }
+  if (e.key === 'ArrowRight') { current = (current + 1) % visible.length; openLightbox(current); }
 });
 </script>
 
