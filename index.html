@@ -425,6 +425,52 @@ h2 {
 .gallery-grid img.hidden {
   display: none;
 }
+
+/* ── PAGINACIÓN GALERÍA ── */
+.gallery-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.page-btn {
+  width: 38px;
+  height: 38px;
+  border: 2px solid var(--azul);
+  background: transparent;
+  color: var(--azul);
+  border-radius: 50%;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.page-btn.active,
+.page-btn:hover { background: var(--azul); color: #fff; }
+.page-btn:disabled { opacity: .35; cursor: default; border-color: var(--gris); color: var(--gris); }
+.page-btn:disabled:hover { background: transparent; color: var(--gris); }
+.page-arrow {
+  width: 38px;
+  height: 38px;
+  border: 2px solid var(--azul);
+  background: transparent;
+  color: var(--azul);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.page-arrow:hover { background: var(--azul); color: #fff; }
+.page-arrow:disabled { opacity: .35; cursor: default; pointer-events: none; }
 .gallery-grid img:hover {
   transform: scale(1.02);
   box-shadow: 0 16px 40px rgba(0,0,0,.2);
@@ -1139,6 +1185,7 @@ details p {
     <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra27.jpg?v=1" alt="Solado exterior porcelánico efecto terracota" data-cat="exterior">
     <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra28.jpg?v=1" alt="Muro exterior alicatado gris con ventanas circulares decorativas" data-cat="exterior">
   </div>
+  <div class="gallery-pagination" id="gallery-pagination"></div>
 </section>
 
 <!-- LIGHTBOX -->
@@ -1420,24 +1467,72 @@ function closeMenu() {
   navMobile.classList.remove('open');
 }
 
-// ── Galería: filtros ──
+// ── Galería: filtros + paginación ──
 const filterBtns = document.querySelectorAll('.filter-btn');
 const galleryEl = document.getElementById('gallery');
+const paginationEl = document.getElementById('gallery-pagination');
+const PER_PAGE = 9;
+let currentFilter = 'all';
+let currentPage = 1;
+
+function getFiltered() {
+  return Array.from(galleryEl.querySelectorAll('img')).filter(img =>
+    currentFilter === 'all' || img.dataset.cat === currentFilter
+  );
+}
+
+function renderGallery() {
+  const filtered = getFiltered();
+  const totalPages = Math.ceil(filtered.length / PER_PAGE);
+  const start = (currentPage - 1) * PER_PAGE;
+  const end = start + PER_PAGE;
+
+  // Mostrar/ocultar imágenes
+  Array.from(galleryEl.querySelectorAll('img')).forEach(img => img.classList.add('hidden'));
+  filtered.slice(start, end).forEach(img => img.classList.remove('hidden'));
+
+  // Renderizar paginación
+  paginationEl.innerHTML = '';
+  if (totalPages <= 1) return;
+
+  const prev = document.createElement('button');
+  prev.className = 'page-arrow';
+  prev.innerHTML = '&#8249;';
+  prev.disabled = currentPage === 1;
+  prev.addEventListener('click', () => { currentPage--; renderGallery(); scrollToGallery(); });
+  paginationEl.appendChild(prev);
+
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement('button');
+    btn.className = 'page-btn' + (i === currentPage ? ' active' : '');
+    btn.textContent = i;
+    btn.addEventListener('click', () => { currentPage = i; renderGallery(); scrollToGallery(); });
+    paginationEl.appendChild(btn);
+  }
+
+  const next = document.createElement('button');
+  next.className = 'page-arrow';
+  next.innerHTML = '&#8250;';
+  next.disabled = currentPage === totalPages;
+  next.addEventListener('click', () => { currentPage++; renderGallery(); scrollToGallery(); });
+  paginationEl.appendChild(next);
+}
+
+function scrollToGallery() {
+  document.getElementById('trabajos').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     filterBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    const filter = btn.dataset.filter;
-    galleryEl.querySelectorAll('img').forEach(img => {
-      if (filter === 'all' || img.dataset.cat === filter) {
-        img.classList.remove('hidden');
-      } else {
-        img.classList.add('hidden');
-      }
-    });
+    currentFilter = btn.dataset.filter;
+    currentPage = 1;
+    renderGallery();
   });
 });
+
+renderGallery();
 
 // ── Lightbox ──
 const lightbox = document.getElementById('lightbox');
@@ -1450,6 +1545,7 @@ let current = 0;
 function getVisibleImgs() {
   return Array.from(galleryEl.querySelectorAll('img:not(.hidden)'));
 }
+
 
 galleryEl.addEventListener('click', e => {
   if (e.target.tagName === 'IMG') {
