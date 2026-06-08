@@ -10,6 +10,10 @@
 <meta name="keywords" content="piscinas Sevilla, construcción piscinas Aljarafe, reformas Huelva, albañilería Cádiz, piscinas Málaga, piscinas Olivares, piscinas Espartinas, gresite piscina Andalucía">
 <meta name="author" content="Antonio Pool">
 <meta name="robots" content="index, follow">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Antonio Pool | Piscinas y Construcción en Sevilla y Aljarafe">
+<meta name="twitter:description" content="Construcción de piscinas, reformas integrales y albañilería en Sevilla, Aljarafe, Huelva, Cádiz y Málaga.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra2.jpg">
 <link rel="canonical" href="https://doublelag.github.io/construcciones-y-piscinas/">
 
 <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
@@ -23,6 +27,7 @@
 <!-- Favicon -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a6ebd'/><text y='72' x='50' text-anchor='middle' font-size='60'>🏊</text></svg>">
 
+<link rel="preload" as="image" href="hero-bg.webp">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
 <!-- Schema.org: Local Business para Google -->
@@ -187,7 +192,7 @@ header {
   min-height: 100vh;
   background:
     linear-gradient(160deg, rgba(4,20,45,.82) 0%, rgba(10,110,189,.45) 60%, rgba(4,20,45,.75) 100%),
-    url("https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/hero-bg.jpg");
+    url("hero-bg.webp");
   background-size: cover;
   background-position: center 40%;
   background-attachment: fixed;
@@ -764,11 +769,171 @@ footer {
   50%      { box-shadow: 0 4px 32px rgba(37,211,102,0.85); }
 }
 
+/* ── LOGO FLOTANTE ── */
+#logo-float {
+  position: fixed;
+  z-index: 200;
+  cursor: pointer;
+  width: 180px;
+  background: white;
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.3);
+  transform: translateX(-50%);
+  transition:
+    top    0.45s cubic-bezier(.4,0,.2,1),
+    left   0.45s cubic-bezier(.4,0,.2,1),
+    width  0.45s cubic-bezier(.4,0,.2,1),
+    transform 0.45s cubic-bezier(.4,0,.2,1),
+    border-radius 0.35s,
+    padding 0.4s,
+    box-shadow 0.4s,
+    background-color 0.4s;
+}
+#logo-float.in-nav {
+  top: 10px !important;
+  left: 36px !important;
+  transform: none !important;
+  width: 44px;
+  background: transparent;
+  border-radius: 50%;
+  padding: 0;
+  box-shadow: none;
+}
+/* Espacio en el nav para el logo cuando está ahí */
+nav.logo-in-nav .nav-logo {
+  padding-left: 56px;
+  transition: padding-left 0.45s cubic-bezier(.4,0,.2,1);
+}
+nav .nav-logo {
+  transition: padding-left 0.45s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── WIDGET MENSAJES WHATSAPP ── */
+.wa-widget-bg { background: var(--gris-claro); }
+.wa-widget-inner { max-width: 1100px; margin: auto; padding: 90px 24px; }
+.wa-widget-inner h2 { margin-bottom: 10px; }
+.wa-widget-inner > p { color: var(--gris); font-size: 16px; margin-bottom: 32px; }
+.choice-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.choice {
+  padding: 10px 24px;
+  border: 2px solid var(--azul);
+  background: transparent;
+  color: var(--azul);
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all .2s;
+}
+.choice.is-active,
+.choice:hover { background: var(--azul); color: #fff; }
+.wa-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.external-note { color: var(--gris); font-size: 13px; margin-top: 14px; }
+
+/* ── PASOS ── */
+.steps-bg { background: var(--azul-oscuro); }
+.steps-inner { max-width: 1100px; margin: auto; padding: 90px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.steps-inner h2 { color: white; }
+.steps-inner .section-tag { color: var(--acento); }
+.steps-inner .section-line { background: var(--acento); }
+.steps-inner > div > p { color: rgba(255,255,255,.65); font-size: 16px; line-height: 1.7; }
+.steps-list { list-style: none; counter-reset: steps; display: flex; flex-direction: column; gap: 0; }
+.steps-list li {
+  counter-increment: steps;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.steps-list li:last-child { border-bottom: none; }
+.steps-list li::before {
+  content: counter(steps, decimal-leading-zero);
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--acento);
+  opacity: .5;
+  line-height: 1.1;
+}
+.steps-list li strong { display: block; color: white; font-size: 17px; margin-bottom: 4px; }
+.steps-list li span { color: rgba(255,255,255,.6); font-size: 14px; line-height: 1.6; }
+
+/* ── FAQ ── */
+.faq-bg { background: var(--blanco); }
+.faq-inner { max-width: 1100px; margin: auto; padding: 90px 24px; display: grid; grid-template-columns: 1fr 2fr; gap: 60px; align-items: start; }
+.faq-inner h2 { color: var(--azul-oscuro); }
+.faq-inner > div > p { color: var(--gris); font-size: 16px; margin-top: 8px; }
+details {
+  border-bottom: 1px solid #e5e9ef;
+  padding: 0;
+}
+details:first-of-type { border-top: 1px solid #e5e9ef; }
+summary {
+  list-style: none;
+  padding: 20px 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--azul-oscuro);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after {
+  content: '+';
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--azul);
+  flex-shrink: 0;
+  transition: transform .2s;
+}
+details[open] summary::after { transform: rotate(45deg); }
+details p {
+  padding: 0 4px 20px;
+  color: var(--gris);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+/* ── FOOTER MEJORADO ── */
+.site-footer {
+  background: #0a0f1a;
+  color: rgba(255,255,255,0.45);
+  padding: 40px 24px;
+  font-size: 13px;
+}
+.footer-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 32px;
+  align-items: center;
+}
+.footer-brand strong { color: rgba(255,255,255,.7); font-size: 15px; display: block; margin-bottom: 4px; }
+.footer-links { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+.footer-links a { color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: var(--acento); }
+.footer-note { text-align: right; }
+
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   nav { padding: 14px 20px; }
   nav ul { display: none; }
   .hamburger { display: flex; }
+  header { background-attachment: scroll; }
   .hero h1 { font-size: 42px; }
   .hero p { font-size: 17px; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -786,10 +951,26 @@ footer {
   h2 { font-size: 32px; }
   .lightbox-prev { left: 8px; }
   .lightbox-next { right: 8px; }
+  .steps-inner { grid-template-columns: 1fr; gap: 40px; }
+  .faq-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-grid { grid-template-columns: 1fr; text-align: center; }
+  .footer-note { text-align: center; }
 }
 </style>
 </head>
 <body>
+
+<img id="logo-float" src="logo-marca.webp" alt="Antonio Pool - volver al inicio">
+
+<a href="#sobre-nosotros" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;background:var(--azul);color:#fff;padding:8px 16px;border-radius:0 0 8px 8px" onfocus="this.style.left='0';this.style.width='auto';this.style.height='auto'" onblur="this.style.left='-9999px';this.style.width='1px';this.style.height='1px'">Saltar al contenido</a>
+
+<svg style="display:none">
+  <defs>
+    <symbol id="wa-icon" viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.856L0 24l6.326-1.508A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.366l-.359-.213-3.754.895.952-3.655-.234-.376A9.818 9.818 0 1112 21.818z"/>
+    </symbol>
+  </defs>
+</svg>
 
 <!-- NAV -->
 <nav>
@@ -800,6 +981,7 @@ footer {
     <li><a href="#trabajos">Trabajos</a></li>
     <li><a href="#proceso">Proceso</a></li>
     <li><a href="#testimonios">Opiniones</a></li>
+    <li><a href="#preguntas">FAQ</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menú">
@@ -815,6 +997,7 @@ footer {
     <li><a href="#trabajos" onclick="closeMenu()">Trabajos</a></li>
     <li><a href="#proceso" onclick="closeMenu()">Proceso</a></li>
     <li><a href="#testimonios" onclick="closeMenu()">Opiniones</a></li>
+    <li><a href="#preguntas" onclick="closeMenu()">FAQ</a></li>
     <li><a href="#contacto" onclick="closeMenu()">Contacto</a></li>
   </ul>
 </div>
@@ -822,17 +1005,17 @@ footer {
 <!-- HERO -->
 <header>
   <div class="hero">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/logo.png" alt="Antonio Pool" class="logo">
+    <img src="logo-marca.webp" alt="Antonio Pool" class="logo" id="logo-hero" style="visibility:hidden">
     <div class="hero-badge">Piscinas · Reformas · Construcción</div>
     <h1>Construimos tu <span>espacio ideal</span></h1>
     <p>Acabados profesionales para viviendas, patios y exteriores en Sevilla, Aljarafe, Huelva, Cádiz y Málaga</p>
     <div class="hero-btns">
-      <a class="btn-wa" href="https://wa.me/34624317520" target="_blank">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.856L0 24l6.326-1.508A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.366l-.359-.213-3.754.895.952-3.655-.234-.376A9.818 9.818 0 1112 21.818z"/></svg>
+      <a class="btn-wa quote-link" data-phone="34624317520" href="https://wa.me/34624317520" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24"><use href="#wa-icon"></use></svg>
         Antonio Mariscal
       </a>
-      <a class="btn-wa" href="https://wa.me/34649104749" target="_blank">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.856L0 24l6.326-1.508A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.366l-.359-.213-3.754.895.952-3.655-.234-.376A9.818 9.818 0 1112 21.818z"/></svg>
+      <a class="btn-wa quote-link" data-phone="34649104749" href="https://wa.me/34649104749" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24"><use href="#wa-icon"></use></svg>
         Antonio Serrano
       </a>
     </div>
@@ -852,11 +1035,11 @@ footer {
       <div class="owners">
         <div class="owner-card">
           <h3>Antonio Mariscal</h3>
-          <p>📞 624 317 520</p>
+          <p><a href="tel:+34624317520" style="color:var(--azul);text-decoration:none;font-weight:500">📞 624 317 520</a></p>
         </div>
         <div class="owner-card">
           <h3>Antonio Serrano</h3>
-          <p>📞 649 104 749</p>
+          <p><a href="tel:+34649104749" style="color:var(--azul);text-decoration:none;font-weight:500">📞 649 104 749</a></p>
         </div>
       </div>
     </div>
@@ -912,6 +1095,23 @@ footer {
   </div>
 </div>
 
+<!-- PASOS -->
+<div class="steps-bg">
+  <div class="steps-inner">
+    <div data-animate>
+      <span class="section-tag">Empieza tu proyecto</span>
+      <h2>Cuéntanos lo que necesitas</h2>
+      <div class="section-line"></div>
+      <p>Unas fotos y una explicación del trabajo ayudan a valorar el proyecto con claridad desde el primer contacto.</p>
+    </div>
+    <ol class="steps-list" data-animate>
+      <li><div><strong>Contacta</strong><span>Escribe por WhatsApp o llama directamente a Antonio Pool.</span></div></li>
+      <li><div><strong>Explica la obra</strong><span>Indica qué espacio quieres construir, reformar o mejorar.</span></div></li>
+      <li><div><strong>Valora el trabajo</strong><span>Comenta los detalles y recibe un presupuesto sin compromiso.</span></div></li>
+    </ol>
+  </div>
+</div>
+
 <!-- GALERÍA -->
 <section id="trabajos">
   <span class="section-tag">Proyectos realizados</span>
@@ -921,37 +1121,37 @@ footer {
     <button class="filter-btn active" data-filter="all">Todas</button>
     <button class="filter-btn" data-filter="piscina">Piscinas</button>
     <button class="filter-btn" data-filter="bano">Baños</button>
-    <button class="filter-btn" data-filter="exterior">Exteriores</button>
+    <button class="filter-btn" data-filter="exterior">Construcción</button>
   </div>
   <div class="gallery-grid delay-1" id="gallery" data-animate>
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra1.jpg?v=3" alt="Piscina terminada vista exterior" data-cat="piscina">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra2.jpg?v=3" alt="Piscina terminada vista lateral" data-cat="piscina">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra3.jpg?v=3" alt="Piscina con gresite y escalones" data-cat="piscina">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra4.jpg?v=3" alt="Borde de piscina con tarima porcelánica" data-cat="piscina">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra5.jpg?v=3" alt="Interior de piscina con escalones" data-cat="piscina">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra6.jpg?v=3" alt="Escalones de piscina con gresite azul" data-cat="piscina">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra7.jpg?v=3" alt="Alicatado en espiga para baño" data-cat="bano">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra8.jpg?v=3" alt="Azulejos decorativos con motivos tropicales" data-cat="bano">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra9.jpg?v=3" alt="Reforma de cuarto de baño con ducha" data-cat="bano">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra10.jpg?v=1" alt="Piscina terminada con solado de piedra y ducha exterior" data-cat="piscina">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra11.jpg?v=1" alt="Interior piscina gresite verde agua con escalones en zigzag" data-cat="piscina">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra12.jpg?v=1" alt="Interior piscina gresite verde agua con focos" data-cat="piscina">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra13.jpg?v=1" alt="Piscina con gresite azul claro y borde porcelánico gris" data-cat="piscina">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra14.jpg?v=1" alt="Piscina terminada gresite azul con escalones angulares" data-cat="piscina">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra15.jpg?v=1" alt="Piscina gresite azul claro con escalones y borde gris" data-cat="piscina">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra16.jpg?v=1" alt="Interior piscina gresite verde-gris con borde imitación madera" data-cat="piscina">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra17.jpg?v=1" alt="Piscina gresite azul marino con escalones anchos y focos" data-cat="piscina">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra18.jpg?v=1" alt="Interior piscina gresite azul marino" data-cat="piscina">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra19.jpg?v=1" alt="Piscina gresite azul marino con zona técnica exterior" data-cat="piscina">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra20.jpg?v=1" alt="Baño con alicatado de mármol blanco y vetas doradas" data-cat="bano">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra21.jpg?v=1" alt="Baño de mármol blanco con acceso al jardín" data-cat="bano">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra22.jpg?v=1" alt="Ducha con plato blanco y mármol blanco en paredes" data-cat="bano">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra23.jpg?v=1" alt="Esquina de ducha con mármol blanco de lujo" data-cat="bano">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra24.jpg?v=1" alt="Solado porcelánico efecto madera en espacio comercial" data-cat="exterior">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra25.jpg?v=1" alt="Porche exterior cubierto con suelo porcelánico imitación madera" data-cat="exterior">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra26.jpg?v=1" alt="Finca reformada con solado exterior y fachada renovada" data-cat="exterior">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra27.jpg?v=1" alt="Solado exterior porcelánico efecto terracota" data-cat="exterior">
-    <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra28.jpg?v=1" alt="Muro exterior alicatado gris con ventanas circulares decorativas" data-cat="exterior">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra1.jpg?v=3" alt="Piscina terminada vista exterior" data-cat="piscina">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra2.jpg?v=3" alt="Piscina terminada vista lateral" data-cat="piscina">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra3.jpg?v=3" alt="Piscina con gresite y escalones" data-cat="piscina">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra4.jpg?v=3" alt="Borde de piscina con tarima porcelánica" data-cat="piscina">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra5.jpg?v=3" alt="Interior de piscina con escalones" data-cat="piscina">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra6.jpg?v=3" alt="Escalones de piscina con gresite azul" data-cat="piscina">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra7.jpg?v=3" alt="Alicatado en espiga para baño" data-cat="bano">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra8.jpg?v=3" alt="Azulejos decorativos con motivos tropicales" data-cat="bano">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra9.jpg?v=3" alt="Reforma de cuarto de baño con ducha" data-cat="bano">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra10.jpg?v=1" alt="Piscina terminada con solado de piedra y ducha exterior" data-cat="piscina">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra11.jpg?v=1" alt="Interior piscina gresite verde agua con escalones en zigzag" data-cat="piscina">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra12.jpg?v=1" alt="Interior piscina gresite verde agua con focos" data-cat="piscina">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra13.jpg?v=1" alt="Piscina con gresite azul claro y borde porcelánico gris" data-cat="piscina">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra14.jpg?v=1" alt="Piscina terminada gresite azul con escalones angulares" data-cat="piscina">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra15.jpg?v=1" alt="Piscina gresite azul claro con escalones y borde gris" data-cat="piscina">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra16.jpg?v=1" alt="Interior piscina gresite verde-gris con borde imitación madera" data-cat="piscina">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra17.jpg?v=1" alt="Piscina gresite azul marino con escalones anchos y focos" data-cat="piscina">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra18.jpg?v=1" alt="Interior piscina gresite azul marino" data-cat="piscina">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra19.jpg?v=1" alt="Piscina gresite azul marino con zona técnica exterior" data-cat="piscina">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra20.jpg?v=1" alt="Baño con alicatado de mármol blanco y vetas doradas" data-cat="bano">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra21.jpg?v=1" alt="Baño de mármol blanco con acceso al jardín" data-cat="bano">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra22.jpg?v=1" alt="Ducha con plato blanco y mármol blanco en paredes" data-cat="bano">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra23.jpg?v=1" alt="Esquina de ducha con mármol blanco de lujo" data-cat="bano">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra24.jpg?v=1" alt="Solado porcelánico efecto madera en espacio comercial" data-cat="exterior">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra25.jpg?v=1" alt="Porche exterior cubierto con suelo porcelánico imitación madera" data-cat="exterior">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra26.jpg?v=1" alt="Finca reformada con solado exterior y fachada renovada" data-cat="exterior">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra27.jpg?v=1" alt="Solado exterior porcelánico efecto terracota" data-cat="exterior">
+    <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/obra28.jpg?v=1" alt="Muro exterior alicatado gris con ventanas circulares decorativas" data-cat="exterior">
   </div>
 </section>
 
@@ -971,7 +1171,7 @@ footer {
     <div class="section-line"></div>
     <div class="proceso-grid" data-animate>
       <div class="paso">
-        <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/proceso1.jpg?v=3" alt="Inicio de la obra">
+        <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/proceso1.jpg?v=3" alt="Inicio de la obra">
         <div class="paso-body">
           <div class="paso-num">01</div>
           <h3>Inicio de la obra</h3>
@@ -979,7 +1179,7 @@ footer {
         </div>
       </div>
       <div class="paso">
-        <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/proceso2.jpg?v=3" alt="Estructura y ferrallado">
+        <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/proceso2.jpg?v=3" alt="Estructura y ferrallado">
         <div class="paso-body">
           <div class="paso-num">02</div>
           <h3>Estructura y ferrallado</h3>
@@ -987,7 +1187,7 @@ footer {
         </div>
       </div>
       <div class="paso">
-        <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/proceso3.jpg?v=3" alt="Construcción en ejecución">
+        <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/proceso3.jpg?v=3" alt="Construcción en ejecución">
         <div class="paso-body">
           <div class="paso-num">03</div>
           <h3>Construcción en ejecución</h3>
@@ -995,7 +1195,7 @@ footer {
         </div>
       </div>
       <div class="paso">
-        <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/proceso4.jpg?v=3" alt="Hormigonado y acabados">
+        <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/proceso4.jpg?v=3" alt="Hormigonado y acabados">
         <div class="paso-body">
           <div class="paso-num">04</div>
           <h3>Hormigonado y acabados</h3>
@@ -1003,7 +1203,7 @@ footer {
         </div>
       </div>
       <div class="paso">
-        <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/proceso5.jpg?v=3" alt="Gresite y llenado">
+        <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/proceso5.jpg?v=3" alt="Gresite y llenado">
         <div class="paso-body">
           <div class="paso-num">05</div>
           <h3>Gresite y llenado</h3>
@@ -1011,7 +1211,7 @@ footer {
         </div>
       </div>
       <div class="paso">
-        <img src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/proceso6.jpg?v=3" alt="Resultado final">
+        <img loading="lazy" src="https://raw.githubusercontent.com/Doublelag/construcciones-y-piscinas/main/proceso6.jpg?v=3" alt="Resultado final">
         <div class="paso-body">
           <div class="paso-num">06</div>
           <h3>Resultado final</h3>
@@ -1066,29 +1266,69 @@ footer {
   </div>
 </div>
 
+<!-- FAQ -->
+<div class="faq-bg" id="preguntas">
+  <div class="faq-inner">
+    <div data-animate>
+      <span class="section-tag">Dudas habituales</span>
+      <h2>Preguntas frecuentes</h2>
+      <div class="section-line"></div>
+      <p>Información rápida antes de contactar.</p>
+    </div>
+    <div data-animate>
+      <details>
+        <summary>¿Hacéis piscinas nuevas y también reformas?</summary>
+        <p>Sí. Antonio Pool realiza construcción, reforma y mejora de piscinas para viviendas, patios y jardines de cualquier tamaño.</p>
+      </details>
+      <details>
+        <summary>¿También trabajáis en interiores y exteriores?</summary>
+        <p>Sí. Entre los servicios se incluyen reformas de vivienda, baños, cocinas, albañilería, patios, solados y césped artificial.</p>
+      </details>
+      <details>
+        <summary>¿Cómo puedo pedir información sobre una obra?</summary>
+        <p>Puedes llamar o enviar un WhatsApp directamente a Antonio Mariscal o Antonio Serrano desde cualquier botón de esta página.</p>
+      </details>
+      <details>
+        <summary>¿Puedo enviar fotografías del espacio?</summary>
+        <p>Al contactar por WhatsApp puedes adjuntar fotos y explicar el trabajo. Cuanta más información, más preciso será el presupuesto.</p>
+      </details>
+      <details>
+        <summary>¿En qué zonas trabajáis?</summary>
+        <p>Principalmente en el Aljarafe sevillano (Olivares, Espartinas, Bormujos, Tomares…) y también en Sevilla capital, Huelva, Cádiz y Málaga.</p>
+      </details>
+    </div>
+  </div>
+</div>
+
 <!-- CONTACTO -->
 <section id="contacto">
   <div class="contact-box" data-animate>
     <span class="section-tag" style="color:var(--acento)">Hablemos</span>
     <h2>¿Tienes un proyecto en mente?</h2>
     <p>Contacta con nosotros por WhatsApp y te damos presupuesto sin compromiso</p>
+    <p style="color:rgba(255,255,255,.7);margin-bottom:16px;font-size:15px;">¿Sobre qué te gustaría consultar?</p>
+    <div class="choice-list" role="group" aria-label="Selecciona el servicio" style="justify-content:center;margin-bottom:20px;">
+      <button type="button" class="choice is-active" data-service="una piscina o su reforma" aria-pressed="true">Piscina</button>
+      <button type="button" class="choice" data-service="una reforma de vivienda" aria-pressed="false">Reforma</button>
+      <button type="button" class="choice" data-service="un trabajo de albañilería" aria-pressed="false">Albañilería</button>
+    </div>
     <div class="contact-phones">
       <div class="contact-phone">
         <div class="name">Antonio Mariscal</div>
-        <div class="num">624 317 520</div>
+        <div class="num"><a href="tel:+34624317520" style="color:white;text-decoration:none">624 317 520</a></div>
       </div>
       <div class="contact-phone">
         <div class="name">Antonio Serrano</div>
-        <div class="num">649 104 749</div>
+        <div class="num"><a href="tel:+34649104749" style="color:white;text-decoration:none">649 104 749</a></div>
       </div>
     </div>
     <div class="contact-btns">
-      <a class="btn-wa-lg" href="https://wa.me/34624317520" target="_blank">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.856L0 24l6.326-1.508A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.366l-.359-.213-3.754.895.952-3.655-.234-.376A9.818 9.818 0 1112 21.818z"/></svg>
+      <a class="btn-wa-lg quote-link" data-phone="34624317520" href="https://wa.me/34624317520" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24"><use href="#wa-icon"></use></svg>
         Contactar con Antonio Mariscal
       </a>
-      <a class="btn-wa-lg" href="https://wa.me/34649104749" target="_blank">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.856L0 24l6.326-1.508A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.366l-.359-.213-3.754.895.952-3.655-.234-.376A9.818 9.818 0 1112 21.818z"/></svg>
+      <a class="btn-wa-lg quote-link" data-phone="34649104749" href="https://wa.me/34649104749" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24"><use href="#wa-icon"></use></svg>
         Contactar con Antonio Serrano
       </a>
     </div>
@@ -1115,14 +1355,11 @@ footer {
           <span class="zona-tag">Y alrededores</span>
         </div>
       </div>
-      <div class="mapa-embed">
-        <iframe
-          src="https://maps.google.com/maps?q=Espartinas,Sevilla,Spain&z=11&output=embed&hl=es"
-          loading="lazy"
-          allowfullscreen
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Zona de actuación Antonio Pool">
-        </iframe>
+      <div class="mapa-embed" id="mapa-embed">
+        <div id="mapa-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;background:rgba(255,255,255,0.05);border-radius:14px;color:rgba(255,255,255,0.6);font-size:13px;text-align:center;padding:16px;">
+          <span style="font-size:22px">🗺️</span>
+          <span>Acepta las cookies para ver el mapa</span>
+        </div>
       </div>
     </div>
 
@@ -1136,16 +1373,64 @@ footer {
 </div>
 
 <!-- BOTÓN FLOTANTE WHATSAPP -->
-<a class="wa-float" href="https://wa.me/34624317520" target="_blank" aria-label="WhatsApp Antonio Mariscal">
+<a class="wa-float quote-link" data-phone="34624317520" href="https://wa.me/34624317520" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Antonio Mariscal">
   <span class="wa-float-tooltip">Contactar por WhatsApp</span>
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.856L0 24l6.326-1.508A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.366l-.359-.213-3.754.895.952-3.655-.234-.376A9.818 9.818 0 1112 21.818z"/></svg>
 </a>
 
-<footer>
-  <p>© 2026 Antonio Pool · Piscinas y Construcción · Sevilla y Aljarafe</p>
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <strong>Antonio Pool</strong>
+      <p>Piscinas, reformas y construcción en Andalucía.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#sobre-nosotros">Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#preguntas">FAQ</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <div class="footer-note">
+      <p>© <span id="footer-year">2026</span> Antonio Pool.</p>
+      <p>El contacto por WhatsApp se realiza en una app externa.</p>
+    </div>
+  </div>
 </footer>
 
 <script>
+// ── Logo flotante ──
+const logoFloat = document.getElementById('logo-float');
+const navEl = document.querySelector('nav');
+const heroHeader = document.querySelector('header');
+
+logoFloat.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+const logoHero = document.getElementById('logo-hero');
+
+function setHeroPosition() {
+  const rect = logoHero.getBoundingClientRect();
+  logoFloat.style.top  = rect.top + 'px';
+  logoFloat.style.left = (rect.left + rect.width / 2) + 'px';
+}
+
+function updateLogoFloat() {
+  const threshold = heroHeader.offsetHeight * 0.35;
+  if (window.scrollY > threshold) {
+    logoFloat.classList.add('in-nav');
+    navEl.classList.add('logo-in-nav');
+  } else {
+    logoFloat.classList.remove('in-nav');
+    navEl.classList.remove('logo-in-nav');
+    setHeroPosition();
+  }
+}
+
+window.addEventListener('scroll', updateLogoFloat, { passive: true });
+window.addEventListener('resize', () => { if (!logoFloat.classList.contains('in-nav')) setHeroPosition(); });
+setHeroPosition();
+updateLogoFloat();
+
 // ── Hamburger menu ──
 const hamburger = document.getElementById('hamburger');
 const navMobile = document.getElementById('nav-mobile');
@@ -1230,13 +1515,55 @@ document.addEventListener('keydown', e => {
 
 // ── Cookie banner ──
 const cookieBanner = document.getElementById('cookie-banner');
-if (localStorage.getItem('cookies-ok')) cookieBanner.classList.add('hidden');
+function loadMapa() {
+  const placeholder = document.getElementById('mapa-placeholder');
+  if (!placeholder) return;
+  const iframe = document.createElement('iframe');
+  iframe.src = 'https://maps.google.com/maps?q=Espartinas,Sevilla,Spain&z=11&output=embed&hl=es';
+  iframe.loading = 'lazy';
+  iframe.allowFullscreen = true;
+  iframe.referrerPolicy = 'no-referrer-when-downgrade';
+  iframe.title = 'Zona de actuación Antonio Pool';
+  iframe.style.cssText = 'width:100%;height:100%;border:none;filter:grayscale(20%)';
+  placeholder.replaceWith(iframe);
+}
+if (localStorage.getItem('cookies-ok')) {
+  cookieBanner.classList.add('hidden');
+  loadMapa();
+}
 document.getElementById('cookie-accept').addEventListener('click', () => {
   localStorage.setItem('cookies-ok', '1');
   cookieBanner.classList.add('hidden');
+  loadMapa();
 });
 
+// ── Mensajes automáticos WhatsApp ──
+const choices = document.querySelectorAll('[data-service]');
+const quoteLinks = document.querySelectorAll('.quote-link');
+let selectedService = 'una piscina o su reforma';
+
+function updateWhatsAppLinks() {
+  const message = encodeURIComponent(`Hola, Antonio Pool. Me gustaría solicitar información sobre ${selectedService}. ¿Podemos comentarlo?`);
+  quoteLinks.forEach(link => {
+    link.href = `https://wa.me/${link.dataset.phone}?text=${message}`;
+  });
+}
+
+choices.forEach(choice => {
+  choice.addEventListener('click', () => {
+    selectedService = choice.dataset.service;
+    choices.forEach(item => {
+      const selected = item === choice;
+      item.classList.toggle('is-active', selected);
+      item.setAttribute('aria-pressed', String(selected));
+    });
+    updateWhatsAppLinks();
+  });
+});
+updateWhatsAppLinks();
+
 // ── Animaciones scroll ──
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -1245,7 +1572,16 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.12 });
-document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+
+if (prefersReduced) {
+  document.querySelectorAll('[data-animate]').forEach(el => el.classList.add('visible'));
+} else {
+  document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+}
+
+// ── Año dinámico footer ──
+const footerYear = document.getElementById('footer-year');
+if (footerYear) footerYear.textContent = new Date().getFullYear();
 </script>
 
 </body>
