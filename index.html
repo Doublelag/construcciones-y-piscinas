@@ -774,39 +774,25 @@ footer {
   position: fixed;
   z-index: 200;
   cursor: pointer;
-  width: 180px;
-  background: white;
-  border-radius: 16px;
-  padding: 12px;
-  box-shadow: 0 12px 40px rgba(0,0,0,.3);
-  transform: translateX(-50%);
-  transition:
-    top    0.45s cubic-bezier(.4,0,.2,1),
-    left   0.45s cubic-bezier(.4,0,.2,1),
-    width  0.45s cubic-bezier(.4,0,.2,1),
-    transform 0.45s cubic-bezier(.4,0,.2,1),
-    border-radius 0.35s,
-    padding 0.4s,
-    box-shadow 0.4s,
-    background-color 0.4s;
+  top: 10px;
+  left: 14px;
+  width: 44px;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 #logo-float.in-nav {
-  top: 10px !important;
-  left: 36px !important;
-  transform: none !important;
-  width: 44px;
-  background: transparent;
-  border-radius: 50%;
-  padding: 0;
-  box-shadow: none;
-}
-/* Espacio en el nav para el logo cuando está ahí */
-nav.logo-in-nav .nav-logo {
-  padding-left: 56px;
-  transition: padding-left 0.45s cubic-bezier(.4,0,.2,1);
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
 }
 nav .nav-logo {
-  transition: padding-left 0.45s cubic-bezier(.4,0,.2,1);
+  transition: padding-left 0.35s ease;
+}
+nav.logo-in-nav .nav-logo {
+  padding-left: 54px;
 }
 
 /* ── WIDGET MENSAJES WHATSAPP ── */
@@ -1005,10 +991,10 @@ details p {
 <!-- HERO -->
 <header>
   <div class="hero">
-    <img src="logo-marca.webp" alt="Antonio Pool" class="logo" id="logo-hero" style="visibility:hidden">
+    <img src="logo-marca.webp" alt="Antonio Pool" class="logo" id="logo-hero">
     <div class="hero-badge">Piscinas · Reformas · Construcción</div>
     <h1>Construimos tu <span>espacio ideal</span></h1>
-    <p>Acabados profesionales para viviendas, patios y exteriores en Sevilla, Aljarafe, Huelva, Cádiz y Málaga</p>
+    <p>Acabados profesionales para viviendas, patios y exteriores en Sevilla, Huelva, Cádiz y Málaga</p>
     <div class="hero-btns">
       <a class="btn-wa quote-link" data-phone="34624317520" href="https://wa.me/34624317520" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24"><use href="#wa-icon"></use></svg>
@@ -1408,28 +1394,19 @@ logoFloat.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 's
 
 const logoHero = document.getElementById('logo-hero');
 
-function setHeroPosition() {
-  const rect = logoHero.getBoundingClientRect();
-  logoFloat.style.top  = rect.top + 'px';
-  logoFloat.style.left = (rect.left + rect.width / 2) + 'px';
-}
+const logoObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      logoFloat.classList.remove('in-nav');
+      navEl.classList.remove('logo-in-nav');
+    } else {
+      logoFloat.classList.add('in-nav');
+      navEl.classList.add('logo-in-nav');
+    }
+  });
+}, { threshold: 0.1 });
 
-function updateLogoFloat() {
-  const threshold = heroHeader.offsetHeight * 0.35;
-  if (window.scrollY > threshold) {
-    logoFloat.classList.add('in-nav');
-    navEl.classList.add('logo-in-nav');
-  } else {
-    logoFloat.classList.remove('in-nav');
-    navEl.classList.remove('logo-in-nav');
-    setHeroPosition();
-  }
-}
-
-window.addEventListener('scroll', updateLogoFloat, { passive: true });
-window.addEventListener('resize', () => { if (!logoFloat.classList.contains('in-nav')) setHeroPosition(); });
-setHeroPosition();
-updateLogoFloat();
+logoObserver.observe(logoHero);
 
 // ── Hamburger menu ──
 const hamburger = document.getElementById('hamburger');
